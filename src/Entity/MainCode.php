@@ -26,6 +26,9 @@ class MainCode
     #[ORM\Column(length: 32)]
     private ?string $type = null;
 
+    #[ORM\ManyToOne(inversedBy: 'codes')]
+    private ?Html $html = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class MainCode
     public function setType(string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getHtml(): ?Html
+    {
+        return $this->html;
+    }
+
+    public function setHtml(?Html $html): static
+    {
+        $this->html = $html;
 
         return $this;
     }

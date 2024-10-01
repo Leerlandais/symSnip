@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HtmlRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,6 +27,17 @@ class Html
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $code = null;
+
+    /**
+     * @var Collection<int, MainCode>
+     */
+    #[ORM\OneToMany(targetEntity: MainCode::class, mappedBy: 'html')]
+    private Collection $codes;
+
+    public function __construct()
+    {
+        $this->codes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -75,6 +88,36 @@ class Html
     public function setCode(string $code): static
     {
         $this->code = $code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MainCode>
+     */
+    public function getCodes(): Collection
+    {
+        return $this->codes;
+    }
+
+    public function addCode(MainCode $code): static
+    {
+        if (!$this->codes->contains($code)) {
+            $this->codes->add($code);
+            $code->setHtml($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCode(MainCode $code): static
+    {
+        if ($this->codes->removeElement($code)) {
+            // set the owning side to null (unless already changed)
+            if ($code->getHtml() === $this) {
+                $code->setHtml(null);
+            }
+        }
 
         return $this;
     }
