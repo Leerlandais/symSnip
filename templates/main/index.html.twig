@@ -34,7 +34,7 @@
                                     <td class="py-3 px-4">{{ latest.title }}</td>
                                     <td class="py-3 px-4">{{ latest.description }}</td>
                                     <td class="py-3 px-4">
-                                        <a href="?route=showCode&id={{ latest.id }}" class="font-medium text-blue-600 hover:text-blue-800">View</a>
+                                        <a href="{{ path('app_code_id', {type: 'code', id: latest.id}) }}" class="font-medium text-blue-600 hover:text-blue-800">View</a>
                                     </td>
                                 </tr>
                             {% endfor %}
