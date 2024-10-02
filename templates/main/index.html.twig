@@ -1,20 +1,49 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
 {% block title %}Hello MainController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{% block content %}
+    <div class="container pt-8 mt-6 flex flex-col gap-4">
+        <h1 class="text-6xl">{{ controller_name }}</h1>
+        <h2 class="text-5xl">Welcome</h2>
+        <h3 class="text-4xl">Use the options on the sidebar to navigate to the code</h3>
+        <h4 class="text-2xl">&lpar;This site was created using Symfony&rpar;</h4>
+    {#     <div class="container pt-8 mt-6 flex flex-col gap-4">
+            {% if getLatest is not iterable %}
+                <h3 class="text-3xl">Sorry, no codes are currently available</h3>
+            {% else %}
+                <h3>{{ headerTitle }}</h3>
+                <!-- component -->
+                <div class="flex items-center justify-center">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>D:/personal/symSnip/symSnip/src/Controller/MainController.php</code></li>
-        <li>Your template at <code>D:/personal/symSnip/symSnip/templates/main/index.html.twig</code></li>
-    </ul>
-</div>
+                    <div class="overflow-x-auto">
+                        <h3 class="text-3xl mb-2">Here's some of the latest snippets</h3>
+                        <table class="min-w-full bg-white shadow-md rounded-xl">
+                            <thead>
+                            <tr class="bg-blue-gray-100 text-center text-gray-700">
+                                <th class="py-3 px-4">Name</th>
+                                <th class="py-3 px-4">Description</th>
+                                <th class="py-3 px-4">View Code</th>
+
+                            </tr>
+                            </thead>
+                            <tbody class="text-blue-gray-900">
+                            {% for latest in getLatest %}
+                                <tr class="border-b border-blue-gray-200">
+                                    <td class="py-3 px-4">{{ latest.getSnipCodeTitle }}</td>
+                                    <td class="py-3 px-4">{{ latest.getSnipCodeDesc }}</td>
+                                    <td class="py-3 px-4">
+                                        <a href="?route=showCode&id={{ latest.getSnipCodeId }}" class="font-medium text-blue-600 hover:text-blue-800">View</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+        </div>
+            {% endif %} #}
+    </div>
 {% endblock %}
