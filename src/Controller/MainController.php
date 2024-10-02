@@ -23,4 +23,20 @@ class MainController extends AbstractController
             'controller_name' => 'ExesController',
         ]);
     }
+
+    #[Route('/code', name: 'app_code')]
+    public function code(): Response
+    {
+        return $this->render('main/code.html.twig', [
+            'controller_name' => 'CodeController',
+        ]);
+    }
+
+    #[Route('/html', name: 'app_html')]
+    public function html(): Response
+    {
+        return $this->render('main/html.html.twig', [
+            'controller_name' => 'HtmlController',
+        ]);
+    }
 }
