@@ -23,10 +23,16 @@
 
     <nav class="bg-blue-500 p-4 flex items-center justify-between">
         <div>
-            <a href="./"><h1 class="text-white text-xl font-semibold">Code Snippets</h1></a>
+            <a href="{{ path('app_main') }}"><h1 class="text-white text-xl font-semibold">Code Snippets</h1></a>
         </div>
         <div class="flex items-center space-x-4">
-            {% block headerLink %}<a href="?route=login"><span class="text-white">Login</span></a>{% endblock %}
+            {% block headerLink %}
+                {% if is_granted('IS_AUTHENTICATED') %}
+                    <a href="{{ path('app_logout') }}"><span class="text-white">Logout</span></a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"><span class="text-white">Login</span></a>
+                {% endif %}
+            {% endblock %}
             <i class="fas fa-user-circle text-white text-2xl"></i>
         </div>
     </nav>

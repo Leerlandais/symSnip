@@ -1,0 +1,55 @@
+{% extends 'template.html.twig' %}
+{% block title %} Home | Login {% endblock %}
+{% block mainClass %}"flex-1 p-6"{% endblock %}
+{% block content %}
+    <div class="w-1/6 mx-auto text-center border border-blue-500 rounded-xl p-10 max-h-fit">
+        <form method="POST">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+            <h3 class="text-xl font-bold pb-4" id="loginFormHeader">Login</h3>
+            <div>
+                <label class="text-gray-600 font-bold inline-block pb-2" for="username" id="loginFormUser">Name :</label>
+                <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+            </div>
+            <div>
+                <label class="text-gray-600 font-bold inline-block pb-2" for="password" id="loginFormPwd">Password :</label>
+                <input class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2" type="password" name="_password" id="userLoginPwd" required>
+            </div>
+            <div>
+                <button type="submit" class="bg-[#4F46E5] w-auto mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]">Submit</button>
+            </div>
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+        </form>
+
+
+    </div>
+    <div class="text-center">
+        <h4 class="text-lg">If you would like to comment on a snippet or message me, <br> you'll need to first <a href="?route=create" class="text-blue-700 underline">create an account</a>,<br> or login above if you already have one</h4>
+    </div>
+
+        {#
+            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+            See https://symfony.com/doc/current/security/remember_me.html
+
+            <div class="checkbox mb-3">
+                <input type="checkbox" name="_remember_me" id="_remember_me">
+                <label for="_remember_me">Remember me</label>
+            </div>
+        #}
+
+{% endblock %} {# end content #}
+{% block footer %}
+    <div class="place-self-center pl-[41%] mt-20 absolute bottom-40">
+        &copy; <a href="https://leerlandais.com" target="_blank">Leerlandais 2024</a>
+    </div>
+{% endblock %}
+
