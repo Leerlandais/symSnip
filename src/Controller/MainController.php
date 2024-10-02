@@ -19,6 +19,7 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
             'getLatest' => $getLatest,
             'headerTitle' => "",
+            'success' => "",
         ]);
     }
 
@@ -39,7 +40,7 @@ class MainController extends AbstractController
     }
 
 
-    #[Route(path: '/{type}/{id}', name: 'app_code_id', requirements: ['id'=>'\d+'], defaults: ['id'=>'1'])]
+    #[Route(path: '/{type}/{id}', name: 'app_type', requirements: ['id'=>'\d+'], defaults: ['id'=>'1'])]
     public function oneCode(string $type, int $id): Response
     {
         if ($type === 'code') {

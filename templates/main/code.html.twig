@@ -2,7 +2,8 @@
 
 {% block content %}
     <h1 class="text-6xl">{{ controller_name }}</h1>
-    {% if success %}
+    {% if success is defined and success %}
         <h2 class="text-5xl">And if this works : {{ success }}</h2>
     {% endif %}
+
 {% endblock %}
