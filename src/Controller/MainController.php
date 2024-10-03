@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Html;
 use App\Entity\MainCode;
 use App\Entity\ExesCode;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,7 +17,6 @@ class MainController extends AbstractController
     {
         $getLatest = $entityManager->getRepository(MainCode::class)->findBy([], ['id' => 'DESC'], 10, 0);
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
             'getLatest' => $getLatest,
             'headerTitle' => "",
             'success' => "",
@@ -70,11 +70,13 @@ class MainController extends AbstractController
             case 'bash' :
                 $headerTitle = "Bash Scripts";
                 break;
+            case 'else' :
+                $headerTitle = "Other Snippets";
+                break;
         }
         $codes = $entityManager->getRepository(MainCode::class)->findBy(['type' => $type], ['id' => 'DESC']);
 
         return $this->render('main/code.html.twig', [
-            'controller_name' => 'CodeController',
             'codes' => $codes,
             'headerTitle' => $headerTitle,
         ]);
@@ -84,10 +86,13 @@ class MainController extends AbstractController
 
 
     #[Route('/html', name: 'app_html')]
-    public function html(): Response
+    public function html(EntityManagerInterface $entityManager): Response
     {
+        $htmls = $entityManager->getRepository(Html::class)->findAll();
         return $this->render('main/html.html.twig', [
-            'controller_name' => 'HtmlController',
+            'controller_name' => 'HTMLController',
+            'headerTitle' => "HTML",
+            'htmls' => $htmls,
         ]);
     }
 }
