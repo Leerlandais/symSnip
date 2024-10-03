@@ -12,6 +12,7 @@
             <h3 class="text-3xl text-center underline">{{ exes.title | capitalize }}</h3>
             <h4 class="text-2xl text-center">{{ exes.description }}</h4>
             <a href="{{ asset('downloads/multi-install-tool.exe') }}" download><img src="{{ asset('images/NodeIcon.png') }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
+            <h6 class="italic text-sm">Click the image to download</h6>
         </div>
     {% endfor %}
     <section>
