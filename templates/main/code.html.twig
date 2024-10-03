@@ -4,10 +4,11 @@
 
 {% block content %}
     <div class="container pt-8 mt-6 flex flex-col gap-4">
-        {% if codes is not iterable %}
+        {% if codes is empty %}
+            <h3 class="text-3xl">{{ headerTitle }}</h3>
             <h3 class="text-3xl">Sorry, no codes are currently available</h3>
         {% else %}
-            <h3>{{ headerTitle }}</h3>
+            <h3 class="text-3xl">{{ headerTitle }}</h3>
             <!-- component -->
             <div class="flex items-center justify-center">
                 <div class="overflow-x-auto">
@@ -22,12 +23,12 @@
                         </tr>
                         </thead>
                         <tbody class="text-blue-gray-900">
-                        {% for data in getData %}
+                        {% for code in codes %}
                             <tr class="border-b border-blue-gray-200">
-                                <td class="py-3 px-4">{{ data.getSnipCodeTitle }}</td>
-                                <td class="py-3 px-4">{{ data.getSnipCodeDesc }}</td>
+                                <td class="py-3 px-4">{{ code.title }}</td>
+                                <td class="py-3 px-4">{{ code.description }}</td>
                                 <td class="py-3 px-4">
-                                    <a href="?route=showCode&id={{ data.getSnipCodeId }}" class="font-medium text-blue-600 hover:text-blue-800">View</a>
+                                    <a href="{{ path("app_code" , {id: code.id}) }}" class="font-medium text-blue-600 hover:text-blue-800">View</a>
                                 </td>
                             </tr>
                         {% endfor %}
