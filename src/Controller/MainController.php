@@ -43,12 +43,14 @@ class MainController extends AbstractController
 
 
     #[Route(path: 'type/{type}', name: 'app_type')]
-    public function oneCode(string $type): Response
+    public function oneType(EntityManagerInterface $entityManager, string $type): Response
     {
 
-        return $this->render('main/oneCode.html.twig', [
+        $codes = $entityManager->getRepository(MainCode::class)->findBy(['type' => $type], ['id' => 'DESC']);
+
+        return $this->render('main/code.html.twig', [
             'controller_name' => 'CodeController',
-            'success' => $type,
+            'codes' => $codes,
         ]);
 
         }
