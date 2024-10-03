@@ -45,12 +45,38 @@ class MainController extends AbstractController
     #[Route(path: 'type/{type}', name: 'app_type')]
     public function oneType(EntityManagerInterface $entityManager, string $type): Response
     {
-
+        switch ($type) {
+            case "phpCall" :
+                $headerTitle = "PHP Call";
+                break;
+            case 'phpFunc' :
+                $headerTitle = "PHP Function";
+                break;
+            case 'java':
+                $headerTitle = "Javascript";
+                break;
+            case 'xtra':
+                $headerTitle = "JS Extra";
+                break;
+            case 'unix' :
+                $headerTitle = "Linux";
+                break;
+            case 'reac' :
+                $headerTitle = "React";
+                break;
+            case 'node' :
+                $headerTitle = "Node";
+                break;
+            case 'bash' :
+                $headerTitle = "Bash Scripts";
+                break;
+        }
         $codes = $entityManager->getRepository(MainCode::class)->findBy(['type' => $type], ['id' => 'DESC']);
 
         return $this->render('main/code.html.twig', [
             'controller_name' => 'CodeController',
             'codes' => $codes,
+            'headerTitle' => $headerTitle,
         ]);
 
         }
