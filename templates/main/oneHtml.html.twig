@@ -1,19 +1,19 @@
 {% extends 'main/index.html.twig' %}
 
 
-{% block title %} Public | View Code {% endblock %}
+{% block title %} Public | View HTML {% endblock %}
 {% block content %}
 
         <div class="text-left border border-gray-700 pt-2 px-6 pb-6 mt-28">
-            <h3 class="text-3xl text-center underline">{{ code.title | capitalize }}</h3>
-            <h4 class="text-2xl text-center">{{ code.description }}</h4>
+            <h3 class="text-3xl text-center underline">{{ html.title | capitalize }}</h3>
+            <h4 class="text-2xl text-center">{{ html.description }}</h4>
             <div class="relative">
                 <label for="codeToCopy" class="sr-only">Label</label>
                 <textarea id="codeToCopy"
                           class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg codeWindow"
                           cols="80"
                           rows="20"
-                          disabled readonly>{{ code.code }}
+                          disabled readonly>{{ html.code }}
                 </textarea>
 
                 <button data-copy-to-clipboard-target="codeToCopy"
