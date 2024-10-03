@@ -2,6 +2,10 @@
 
 
 {% block title %} Public | View Executables {% endblock %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/exes.css') }}">
+{% endblock %}
 {% block content %}
     {% for exes in getExes %}
         <div class="text-center border border-gray-700 pt-2 px-6 pb-6 mt-28 flex flex-col items-center">
@@ -96,4 +100,5 @@
 {% block javascript %}
 {{ parent() }}
 
+<script src="{{ asset('scripts/exesDetailScript.js') }}"></script>
 {% endblock %}
