@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\MainCode;
-use App\Repository\MainCodeRepository;
+use App\Entity\ExesCode;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,10 +24,11 @@ class MainController extends AbstractController
     }
 
     #[Route('/exes', name: 'app_exes')]
-    public function exes(): Response
+    public function exes(EntityManagerInterface $entityManager): Response
     {
+        $getExes = $entityManager->getRepository(ExesCode::class)->findAll();
         return $this->render('main/exes.html.twig', [
-            'controller_name' => 'ExesController',
+            'getExes' => $getExes,
         ]);
     }
 
