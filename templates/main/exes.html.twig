@@ -1,5 +1,19 @@
 {% extends 'main/index.html.twig' %}
 
+
+{% block title %} Public | View Executables {% endblock %}
 {% block content %}
-    <h1 class="text-6xl">{{ controller_name }}</h1>
+
+    {% for exes in getExes %}
+        <div class="text-center border border-gray-700 pt-2 px-6 pb-6 mt-28 flex flex-col items-center">
+            <h3 class="text-3xl text-center underline">{{ exes.getSnipExesTitle | capitalize }}</h3>
+            <h4 class="text-2xl text-center">{{ exes.getSnipExesDesc }}</h4>
+            <a href="downloads/multi-install-tool.exe" download><img src="/public/images/NodeIcon.png" alt="{{ data.getSnipExesDesc }}" class="h-36 w-36"></a>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+{% block javascript %}
+{{ parent() }}
+
 {% endblock %}
