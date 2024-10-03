@@ -32,11 +32,11 @@ class MainController extends AbstractController
         ]);
     }
 
-    #[Route('/code/{id}', name: 'app_code', methods: ['GET'])]
+    #[Route('/code/{id}', name: 'app_code', requirements: ['id'=>'\d+'], methods: ['GET'])]
     public function code(EntityManagerInterface $entityManager, int $id): Response
     {
         $code = $entityManager->getRepository(MainCode::class)->find($id);
-        return $this->render('main/code.html.twig', [
+        return $this->render('main/oneCode.html.twig', [
             'code' => $code,
         ]);
     }
