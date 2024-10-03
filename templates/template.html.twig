@@ -28,6 +28,7 @@
         <div class="flex items-center space-x-4">
             {% block headerLink %}
                 {% if is_granted('IS_AUTHENTICATED') %}
+                    <a href="{{ path('app_admin') }}"><span class="text-white">Controls</span></a>
                     <a href="{{ path('app_logout') }}"><span class="text-white">Logout</span></a>
                 {% else %}
                     <a href="{{ path('app_login') }}"><span class="text-white">Login</span></a>
