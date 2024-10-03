@@ -1,4 +1,4 @@
-console.log("exes script ok");
+
 const dtElements = document.querySelectorAll('dt');
 const ddElements = document.querySelectorAll('dd');
 dtElements.forEach(dt => {

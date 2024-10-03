@@ -1,5 +1,5 @@
 // Code taken straight from Flowbite site
-console.log('copyCodeScript ok');
+
 const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install-copy-button');
 const tooltip = FlowbiteInstances.getInstance('Tooltip', 'tooltip-copy-npm-install-copy-button');
 
