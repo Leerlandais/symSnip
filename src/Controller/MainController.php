@@ -95,4 +95,16 @@ class MainController extends AbstractController
             'htmls' => $htmls,
         ]);
     }
+
+    #[Route('/html/{id}', name: 'app_oneHtml', requirements: ['id'=>'\d+'], methods: ['GET'])]
+    public function oneHtml(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $html = $entityManager->getRepository(Html::class)->find($id);
+        return $this->render('main/oneHtml.html.twig', [
+            'html' => $html,
+        ]);
+    }
+
+
+
 }

@@ -1,6 +1,22 @@
 {% extends 'main/index.html.twig' %}
 
+{% block title %} Public | HTML View {% endblock %}
+
 {% block content %}
-    <h1 class="text-6xl">{{ controller_name }}</h1>
-    {{ dump(htmls) }}
+    <div class="container pt-8 mt-6 flex flex-col gap-4">
+        {% if htmls is empty %}
+            <h3 class="text-3xl">{{ headerTitle }}</h3>
+            <h3 class="text-3xl">Sorry, no HTML builds are currently available</h3>
+        {% else %}
+            <h3 class="text-3xl">{{ headerTitle }}</h3>
+            <!-- component -->
+            <div class="flex flex-row items-center justify-center">
+                <h3 class="text-3xl"></h3>
+                {% for html in htmls %}
+                    <a href="{{ path("app_oneHtml" , {id: html.id}) }}"><img src="{{ html.image }}" alt="{{ html.description }}"></a>
+                {% endfor %}
+
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
