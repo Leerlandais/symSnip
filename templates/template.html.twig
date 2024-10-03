@@ -55,7 +55,7 @@
                         </div>
                         <ul class="dropdown ml-4 hidden">
                             <li class="option-with-dropdown-inner">
-                                <a href="{{ path('app_code') }}">
+                                <a href="{{ path('app_type', {type: 'call' }) }}">
                                     <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                         <div class="flex items-center">
                                             <span>Calls</span>
@@ -64,7 +64,7 @@
                                 </a>
                             </li>
                             <li class="option-with-dropdown-inner">
-                                <a href="{{ path('app_code') }}">
+                                <a href="{{ path('app_type', {type: 'func' }) }}">
                                     <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                         <div class="flex items-center">
                                             <span>Functions</span>
@@ -84,7 +84,7 @@
                         </div>
                         <ul class="dropdown ml-4 hidden">
                             <li class="option-with-dropdown-inner">
-                                <a href="{{ path('app_code') }}">
+                                <a href="{{ path('app_type', {type: 'main' }) }}">
                                     <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                         <div class="flex items-center">
                                             <span>Main</span>
@@ -93,7 +93,7 @@
                                 </a>
                             </li>
                             <li class="option-with-dropdown-inner">
-                                <a href="{{ path('app_code') }}">
+                                <a href="{{ path('app_type', {type: 'xtra' }) }}">
                                     <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                         <div class="flex items-center">
                                             <span>Xtra</span>
@@ -114,7 +114,7 @@
                         </a>
                     </li>
                     <li class="option-with-dropdown">
-                        <a href="{{ path('app_code') }}">
+                        <a href="{{ path('app_type', {type: 'unix' }) }}">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
                                     <i class="fas fa-file-alt mr-2"></i>
@@ -124,7 +124,7 @@
                         </a>
                     </li>
                     <li class="option-with-dropdown">
-                        <a href="{{ path('app_code') }}">
+                        <a href="{{ path('app_type', {type: 'reac' }) }}">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
                                     <i class="fas fa-file-alt mr-2"></i>
@@ -134,7 +134,7 @@
                         </a>
                     </li>
                     <li class="option-with-dropdown">
-                        <a href="{{ path('app_code') }}">
+                        <a href="{{ path('app_type', {type: 'node' }) }}">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
                                     <i class="fas fa-file-alt mr-2"></i>
@@ -144,7 +144,7 @@
                         </a>
                     </li>
                     <li class="option-with-dropdown">
-                        <a href="{{ path('app_code') }}">
+                        <a href="{{ path('app_type', {type: 'bash' }) }}">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
                                     <i class="fas fa-file-alt mr-2"></i>
@@ -155,7 +155,7 @@
                     </li>
                     <!-- ALWAYS LEAVE OTHER FIELD HERE -->
                     <li class="option-with-dropdown">
-                        <a href="{{ path('app_code') }}">
+                        <a href="{{ path('app_type', {type: 'else' }) }}">
                             <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                                 <div class="flex items-center">
                                     <i class="fas fa-file-alt mr-2"></i>

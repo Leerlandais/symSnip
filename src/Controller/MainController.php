@@ -40,21 +40,17 @@ class MainController extends AbstractController
     }
 
 
-    #[Route(path: '/{type}/{id}', name: 'app_type', requirements: ['id'=>'\d+'], defaults: ['id'=>'1'])]
-    public function oneCode(string $type, int $id): Response
+    #[Route(path: 'type/{type}', name: 'app_type')]
+    public function oneCode(string $type): Response
     {
-        if ($type === 'code') {
+
         return $this->render('main/oneCode.html.twig', [
             'controller_name' => 'CodeController',
-            'success' => $id,
+            'success' => $type,
         ]);
-        }else {
-            return $this->render('main/code.html.twig', [
-                'controller_name' => 'CodeController',
-                'success' => 'There was a problem with the request',
-            ]);
+
         }
-    }
+
 
 
     #[Route('/html', name: 'app_html')]
