@@ -1,6 +1,6 @@
+console.log("exes script ok");
 const dtElements = document.querySelectorAll('dt');
 const ddElements = document.querySelectorAll('dd');
-console.log("exes script ok");
 dtElements.forEach(dt => {
     dt.addEventListener('click', function() {
         ddElements.forEach(dd => {
