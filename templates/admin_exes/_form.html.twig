@@ -1,4 +1,61 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="bg-[#F9FAFB] h-auto w-auto flex items-center">
+    <div class="h-max mx-auto flex flex-col items-center justify-center">
+        <h3 class="text-xl font-bold text-center pb-2">Add Executable File</h3>
+        <div class="bg-white shadow-xl px-10 pb-2 flex flex-row gap-4 text-sm text-center">
+            <div class="flex flex-row">
+                <div class="flex flex-col">
+
+                    <div>
+                        <label class="text-gray-600 font-bold inline-block pb-2"
+                               for="addExesTitle">
+                            Title
+                        </label>
+                        {{ form_widget(form.title,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2',
+                                                             'id': 'addExesTitle',
+                                                             'placeholder': 'Title'}}) }}
+                    </div>
+
+                    <div>
+                        <label class="text-gray-600 font-bold inline-block pb-2"
+                               for="addExesDesc">
+                            Description
+                        </label>
+                        {{ form_widget(form.description,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2',
+                                                             'id': 'addExesDesc',
+                                                             'placeholder': 'Description'}}) }}
+                    </div>
+
+                    <div>
+                        <label class="text-gray-600 font-bold inline-block pb-2"
+                               for="addExesImg">
+                            Image
+                        </label>
+                        {{ form_widget(form.image,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2',
+                                                             'id': 'addExesImg',
+                                                             'placeholder': 'Image URL'}}) }}
+                    </div>
+
+                    <div>
+                        <label class="text-gray-600 font-bold inline-block pb-2"
+                               for="addExesLoc">
+                            Location
+                        </label>
+                        {{ form_widget(form.location,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2', 'id': 'addExesLoc', 'placeholder': 'downloads/', 'value': 'downloads/'}}) }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <button class="bg-[#4F46E5] w-full py-2 px-6 my-6 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]" type="submit">
+                Add Executable
+            </button>
+        </div>
+    </div>
+</div>
 {{ form_end(form) }}
