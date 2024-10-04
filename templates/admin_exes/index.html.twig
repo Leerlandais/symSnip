@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ExesCode index{% endblock %}
+
+{% block body %}
+    <h1>ExesCode index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Location</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exes_code in exes_codes %}
+            <tr>
+                <td>{{ exes_code.id }}</td>
+                <td>{{ exes_code.title }}</td>
+                <td>{{ exes_code.description }}</td>
+                <td>{{ exes_code.image }}</td>
+                <td>{{ exes_code.location }}</td>
+                <td>
+                    <a href="{{ path('app_admin_exes_show', {'id': exes_code.id}) }}">show</a>
+                    <a href="{{ path('app_admin_exes_edit', {'id': exes_code.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_exes_new') }}">Create new</a>
+{% endblock %}
