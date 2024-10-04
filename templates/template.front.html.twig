@@ -23,11 +23,16 @@
 
     <nav class="bg-blue-500 p-4 flex items-center justify-between">
         <div>
+            {% if is_granted('IS_AUTHENTICATED') %}
+                <a href="{{ path('app_admin') }}"><h1 class="text-white text-xl font-semibold">Return to Admin Controls</h1></a>
+            {% else %}
             <a href="{{ path('app_main') }}"><h1 class="text-white text-xl font-semibold">Code Snippets</h1></a>
+            {% endif %}
         </div>
         <div class="flex items-center space-x-4">
             {% block headerLink %}
                 {% if is_granted('IS_AUTHENTICATED') %}
+
                     <a href="{{ path('app_logout') }}"><span class="text-white">Logout</span></a>
                 {% else %}
                     <a href="{{ path('app_login') }}"><span class="text-white">Login</span></a>
@@ -182,7 +187,12 @@
                 {% endblock %}
             </ul>
         </nav>
-        <a href="https://leerlandais.com/portail" class="bottom-40 absolute bg-blue-500 py-2 px-6 mt-2 rounded-md text-white w-auto ml-12 font-bold cursor-pointer hover:bg-green-600"><button>Portfolio</button></a>
+        <a href="https://leerlandais.com/portail"
+           class="bottom-40 absolute bg-blue-500 py-2 px-6 mt-2 rounded-md text-white w-auto ml-12 font-bold cursor-pointer hover:bg-[#138808]">
+            <button>
+                Portfolio
+            </button>
+        </a>
     </aside>
 {% endblock %} {# end sideBar #}
 {% block footer %}

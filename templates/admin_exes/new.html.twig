@@ -1,0 +1,10 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}New ExesCode{% endblock %}
+
+{% block content %}
+<div class="mt-24">
+    {{ include('admin_exes/_form.html.twig') }}
+</div>
+    <a href="{{ path('app_admin_exes_index') }}" class="bg-[#138808] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#13AF08]">Back to Executables</a>
+{% endblock %}
