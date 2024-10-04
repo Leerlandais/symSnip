@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    {{ parent() }}
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% block stylesheets %}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    {% endblock %} {# end stylesheets #}
+{% endblock %} {# end head #}
+
+
+
+{% block mainClass %} 'flex flex-col text-center mx-auto w-fit' {% endblock %}
+{% block bodyClass %}"bg-gray-200"{% endblock %}
+{% block header %}
+
+    <nav class="bg-blue-500 p-4 flex items-center justify-between">
+        <div>
+            <a href="{{ path('app_main') }}"><h1 class="text-white text-xl font-semibold">Code Snippets</h1></a>
+        </div>
+
+        <div class="flex items-center space-x-4">
+            {% block headerLink %}
+                {% if is_granted('IS_AUTHENTICATED') %}
+                    <a href="{{ path('app_logout') }}"><span class="text-white">Logout</span></a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"><span class="text-white">Login</span></a>
+                {% endif %}
+            {% endblock %}
+            <i class="fas fa-user-circle text-white text-2xl"></i>
+        </div>
+    </nav>
+{% endblock %} {# end header #}
+
+
+{% block sideBar %}
+    <aside class="bg-gray-800 text-white w-64 min-h-screen p-4">
+        <nav>
+            <ul class="space-y-2">
+
+                {% block sideBarPublic %}
+                {% endblock %} {# end sideBarPublic #}
+                {% block sideBarAdmin %}
+                    <li class="option-with-dropdown-inner">
+                        <a href="?control=add">
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                                <div class="flex items-center">
+                                    <span>Add Code</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="?control=html">
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                                <div class="flex items-center">
+                                    <span>Add HTML</span>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="?control=exes">
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                                <div class="flex items-center">
+                                    <span>Add Executable</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="option-with-dropdown">
+                        <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                            <div class="flex items-center">
+                                <i class="fas fa-file-alt mr-2"></i>
+                                <span>Update</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-xs"></i>
+                        </div>
+                        <ul class="dropdown ml-4 hidden">
+                            <li class="option-with-dropdown-inner">
+                                <a href="?control=update&type=code">
+                                    <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                                        <div class="flex items-center">
+                                            <span>Code</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="option-with-dropdown-inner">
+                                <a href="?control=update&type=html">
+                                    <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                                        <div class="flex items-center">
+                                            <span>Html</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                {% endblock %}
+            </ul>
+        </nav>
+        <a href="https://leerlandais.com/portail" class="bottom-40 absolute bg-blue-500 py-2 px-6 mt-2 rounded-md text-white w-auto ml-12 font-bold cursor-pointer hover:bg-green-600"><button>Portfolio</button></a>
+    </aside>
+{% endblock %} {# end sideBar #}
+{% block footer %}
+    <div class="flex place-self-center my-20  align-middle">
+        &copy; <a href="https://leerlandais.com" target="_blank">Leerlandais 2024</a>
+    </div>
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="{{ asset('scripts/sideBarScript.js') }}"></script>
+{% endblock %}
