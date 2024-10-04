@@ -25,14 +25,7 @@ SET time_zone = "+00:00";
 -- Dumping data for table `doctrine_migration_versions`
 --
 
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20241001160901', '2024-10-01 16:13:52', 1521),
-('DoctrineMigrations\\Version20241001161410', '2024-10-01 16:14:52', 215),
-('DoctrineMigrations\\Version20241001161930', '2024-10-01 16:19:46', 524),
-('DoctrineMigrations\\Version20241001162448', '2024-10-01 16:24:55', 1853),
-('DoctrineMigrations\\Version20241001173526', '2024-10-01 17:35:42', 143),
-('DoctrineMigrations\\Version20241001174104', '2024-10-01 17:41:22', 263),
-('DoctrineMigrations\\Version20241002042910', '2024-10-02 04:29:25', 216);
+
 
 --
 -- Dumping data for table `exes_code`
