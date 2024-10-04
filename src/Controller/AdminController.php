@@ -40,6 +40,30 @@ class AdminController extends AbstractController
             'title' => 'Administration | Add Exes',
         ]);
     }
+
+    #[Route('/admin/set/code', name: 'admin_set_code')]
+    public function setCode(): Response
+    {
+        return $this->render('admin/setCode.html.twig', [
+            'title' => 'Administration | Set code',
+        ]);
+    }
+
+    #[Route('/admin/set/html', name: 'admin_set_html')]
+    public function setHtml(): Response
+    {
+        return $this->render('admin/setHtml.html.twig', [
+            'title' => 'Administration | Set Html',
+        ]);
+    }
+
+    #[Route('/admin/set/exes', name: 'admin_set_exes')]
+    public function setExes(): Response
+    {
+        return $this->render('admin/setExes.html.twig', [
+            'title' => 'Administration | Set Executable',
+        ]);
+    }
 }
 
 

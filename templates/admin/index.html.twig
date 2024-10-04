@@ -21,7 +21,7 @@
                 </div>
             </div>
         </a>
-    <a href="{{ path('admin_add_code') }}">
+    <a href="{{ path('admin_add_exes') }}">
         <div class="flex items-center justify-between p-2 hover:bg-gray-700">
             <div class="flex items-center">
                 <span>Add Executable</span>
@@ -40,7 +40,7 @@
         </div>
         <ul class="dropdown ml-4 hidden">
             <li class="option-with-dropdown-inner">
-                <a href="{{ path('admin_add_code') }}">
+                <a href="{{ path('admin_set_code') }}">
                     <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                         <div class="flex items-center">
                             <span>Code</span>
@@ -49,10 +49,19 @@
                 </a>
             </li>
             <li class="option-with-dropdown-inner">
-                <a href="{{ path('admin_add_code') }}">
+                <a href="{{ path('admin_set_html') }}">
                     <div class="flex items-center justify-between p-2 hover:bg-gray-700">
                         <div class="flex items-center">
                             <span>Html</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="option-with-dropdown-inner">
+                <a href="{{ path('admin_set_exes') }}">
+                    <div class="flex items-center justify-between p-2 hover:bg-gray-700">
+                        <div class="flex items-center">
+                            <span>Executables</span>
                         </div>
                     </div>
                 </a>
