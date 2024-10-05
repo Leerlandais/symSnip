@@ -1,12 +1,12 @@
 {% extends 'admin/index.html.twig' %}
 
-{% block title %}MainCode index{% endblock %}
+{% block title %} Admin | HTML View {% endblock %}
 
 {% block content %}
-    <h1 class="mt-36 mb-8 text-5xl">Codes</h1>
+    <h1 class="mt-36 mb-8 text-5xl">HTML Templates</h1>
     <div class="container pt-8 mt-6 flex flex-col gap-4">
-        {% if main_codes is empty %}
-            <h3 class="text-3xl">Sorry, no codes are currently available</h3>
+        {% if htmls is empty %}
+            <h3 class="text-3xl">Sorry, no templates are currently available</h3>
         {% else %}
 
             <div class="flex items-center justify-center">
@@ -15,7 +15,7 @@
                     <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead>
                         <tr class="bg-blue-gray-100 text-center text-gray-700">
-                            <th class="py-3 px-4">Name</th>
+                            <th class="py-3 px-4">Title</th>
                             <th class="py-3 px-4">Description</th>
                             <th class="py-3 px-4 text-center">Show</th>
                             <th class="py-3 px-4 text-center">Update</th>
@@ -23,23 +23,23 @@
                         </tr>
                         </thead>
                         <tbody class="text-blue-gray-900">
-                        {% for code in main_codes %}
+                        {% for code in htmls %}
                             <tr class="border-b border-blue-gray-200">
                                 <td class="py-3 px-4">{{ code.title }}</td>
                                 <td class="py-3 px-4">{{ code.description }}</td>
 
                                 <td class="py-3 px-4">
-                                    <a href="{{ path('app_admin_code_show', {'id': code.id}) }}"
+                                    <a href="{{ path('app_admin_html_show', {'id': code.id}) }}"
                                        class="font-medium text-blue-600 hover:text-[#13A808] hover:underline">Show
                                     </a>
                                 </td>
                                 <td class="py-3 px-4">
-                                    <a href="{{ path('app_admin_code_edit', {'id': code.id}) }}"
+                                    <a href="{{ path('app_admin_html_edit', {'id': code.id}) }}"
                                        class="font-medium text-blue-600 hover:text-[#F18805] hover:underline">Update
                                     </a>
                                 </td>
                                 <td class="py-3 px-4">
-                                    <form method="post" action="{{ path('app_admin_code_delete', {'id': code.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                    <form method="post" action="{{ path('app_admin_html_delete', {'id': code.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
                                         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ code.id) }}">
                                         <button class="font-medium text-blue-600 hover:text-[#FF1B1C] hover:underline">Delete</button>
                                     </form>
@@ -53,9 +53,10 @@
             </div>
         {% endif %}
     </div>
-    <a href="{{ path('app_admin_code_new') }}">
+    <a href="{{ path('app_admin_html_new') }}">
         <button class="bg-[#4F46E5] w-auto mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]">
-            Add New Code
+            Add New Html
         </button>
     </a>
 {% endblock %}
+
