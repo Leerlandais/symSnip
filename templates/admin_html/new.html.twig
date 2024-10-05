@@ -1,11 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
-{% block title %}New Html{% endblock %}
+{% block title %}Admin | New Html{% endblock %}
 
-{% block body %}
-    <h1>Create new Html</h1>
-
+{% block content %}
+<div class="mt-24">
     {{ include('admin_html/_form.html.twig') }}
-
-    <a href="{{ path('app_admin_html_index') }}">back to list</a>
+</div>
+    <a href="{{ path('app_admin_html_index') }}" class="bg-[#138808] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#13AF08]">back to list</a>
 {% endblock %}

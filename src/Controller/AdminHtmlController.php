@@ -39,6 +39,7 @@ final class AdminHtmlController extends AbstractController
         return $this->render('admin_html/new.html.twig', [
             'html' => $html,
             'form' => $form,
+            'edit' => false,
         ]);
     }
 
@@ -65,6 +66,7 @@ final class AdminHtmlController extends AbstractController
         return $this->render('admin_html/edit.html.twig', [
             'html' => $html,
             'form' => $form,
+            'edit' => true,
         ]);
     }
 
