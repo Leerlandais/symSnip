@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MainCode{% endblock %}
+
+{% block body %}
+    <h1>MainCode</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_code.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ main_code.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ main_code.description }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ main_code.code }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ main_code.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_code_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_code_edit', {'id': main_code.id}) }}">edit</a>
+
+    {{ include('admin_code/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MainCode{% endblock %}
+
+{% block body %}
+    <h1>Create new MainCode</h1>
+
+    {{ include('admin_code/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_code_index') }}">back to list</a>
+{% endblock %}
