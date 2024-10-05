@@ -11,14 +11,9 @@
         <div class="text-center border border-gray-700 pt-2 px-6 pb-6 mt-28 flex flex-col items-center">
             <h3 class="text-3xl text-center underline">{{ exes.title | capitalize }}</h3>
             <h4 class="text-2xl text-center">{{ exes.description }}</h4>
-            <a href="{{ asset('downloads/multi-install-tool.exe') }}" download><img src="{{ asset('images/NodeIcon.png') }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
+            <a href="{{ asset(exes.location) }}" download><img src="{{ asset(exes.image) }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
             <h6 class="italic text-sm">Click the image to download</h6>
         </div>
-        <a href="{{ path('app_admin_exes_index') }}">back to list</a>
-
-        <a href="{{ path('app_admin_exes_edit', {'id': exes_code.id}) }}">edit</a>
-
-        {{ include('admin_exes/_delete_form.html.twig') }}
 {% if exes.id == 1  %}
     <section>
         <h3 class="text-2xl underline mt-8">The Multi-Installer can :</h3>

@@ -1,0 +1,62 @@
+{{ form_start(form) }}
+
+
+
+    <div class="bg-[#F9FAFB] h-auto w-auto flex items-center">
+        <div class="h-max mx-auto flex flex-col items-center justify-center">
+            <h3 class="text-xl font-bold text-center pb-2">Add Code</h3>
+            <div class="bg-white shadow-xl px-10 pb-2 flex flex-row gap-4 text-sm text-center">
+                <div class="flex flex-row">
+                    <div class="flex flex-col">
+                        <div>
+                            <label class="text-gray-600 font-bold inline-block pb-2" for="addCodeTitle">Title</label>
+                            {{ form_widget(form.title,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2',
+                                    'id': 'addCodeTitle',
+                                    'placeholder': 'Title'}}) }}
+                        </div>
+                        <div>
+                            <label class="text-gray-600 font-bold inline-block pb-2" for="addCodeDesc">Description</label>
+                            {{ form_widget(form.description,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2',
+                                    'id': 'addCodeDesc',
+                                    'placeholder': 'Description'}}) }}
+                        </div>
+
+                        <div>
+                            <label class="text-gray-600 font-bold inline-block pb-2" for="addCodeCode">Code</label>
+                            {{ form_widget(form.code,
+                                {'attr': {'class': 'border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2',
+                                    'id': 'addCodeCode',
+                                    'placeholder': 'Code',
+                                    'type' : 'textarea'}}) }}
+                        </div>
+
+                            <label class="text-gray-600 font-bold inline-block" for="addCodeType">Type</label>
+
+                            {{ form_widget(form.type, {
+                                'attr': {
+                                    'id': 'addCodeType',
+                                    'class': 'space-x-2 border-1 border'
+                                }
+                            }) }}
+
+                    </div>
+                </div>
+            </div>
+            <div>
+                {% if edit %}
+                    <button class="bg-[#4F46E5] w-full py-2 px-6 mt-6 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]"
+                            type="submit">Update
+                    </button>
+                {% else %}
+                <button class="bg-[#4F46E5] w-full py-2 px-6 mt-6 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]"
+                        type="submit">Add
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{{ form_end(form) }}
