@@ -18,10 +18,6 @@ class MainCodeType extends AbstractType
             ->add('description')
             ->add('code')
             ->add('type')
-            ->add('html', EntityType::class, [
-                'class' => Html::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 

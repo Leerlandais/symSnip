@@ -50,12 +50,6 @@
     </form>
     <a href="{{ path('app_admin_code_index') }}" class="bg-[#138808] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#13AF08]">Back to Codes</a>
 
-
-    <a href="{{ path('app_admin_code_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_code_edit', {'id': main_code.id}) }}">edit</a>
-
-    {{ include('admin_code/_delete_form.html.twig') }}
 {% endblock %}
 {% block javascript %}
 {{ parent() }}
