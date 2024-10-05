@@ -16,8 +16,9 @@
                         <tr class="bg-blue-gray-100 text-center text-gray-700">
                             <th class="py-3 px-4">Name</th>
                             <th class="py-3 px-4">Description</th>
-                            <th class="py-3 px-4">View Code</th>
-
+                            <th class="py-3 px-4 text-center">Show</th>
+                            <th class="py-3 px-4 text-center">Update</th>
+                            <th class="py-3 px-4 text-center">Delete</th>
                         </tr>
                         </thead>
                         <tbody class="text-blue-gray-900">
@@ -25,8 +26,22 @@
                             <tr class="border-b border-blue-gray-200">
                                 <td class="py-3 px-4">{{ code.title }}</td>
                                 <td class="py-3 px-4">{{ code.description }}</td>
+
                                 <td class="py-3 px-4">
-                                    <a href="{{ path("app_admin_code_show" , {id: code.id}) }}" class="font-medium text-blue-600 hover:text-blue-800">View</a>
+                                    <a href="{{ path('app_admin_code_show', {'id': code.id}) }}"
+                                       class="font-medium text-blue-600 hover:text-[#13A808] hover:underline">Show
+                                    </a>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <a href="{{ path('app_admin_code_edit', {'id': code.id}) }}"
+                                       class="font-medium text-blue-600 hover:text-[#F18805] hover:underline">Update
+                                    </a>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <form method="post" action="{{ path('app_admin_code_delete', {'id': code.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ code.id) }}">
+                                        <button class="font-medium text-blue-600 hover:text-[#FF1B1C] hover:underline">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         {% endfor %}

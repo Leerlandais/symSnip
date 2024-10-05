@@ -14,11 +14,6 @@
             <a href="{{ asset('downloads/multi-install-tool.exe') }}" download><img src="{{ asset('images/NodeIcon.png') }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
             <h6 class="italic text-sm">Click the image to download</h6>
         </div>
-        <a href="{{ path('app_admin_exes_index') }}">back to list</a>
-
-        <a href="{{ path('app_admin_exes_edit', {'id': exes_code.id}) }}">edit</a>
-
-        {{ include('admin_exes/_delete_form.html.twig') }}
 {% if exes.id == 1  %}
     <section>
         <h3 class="text-2xl underline mt-8">The Multi-Installer can :</h3>
