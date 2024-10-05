@@ -44,8 +44,9 @@ final class AdminHtmlController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_admin_html_show', methods: ['GET'])]
-    public function show(Html $html): Response
+    public function show(HtmlRepository $htmlRepository, int $id): Response
     {
+        $html = $htmlRepository->find($id);
         return $this->render('admin_html/show.html.twig', [
             'html' => $html,
         ]);
