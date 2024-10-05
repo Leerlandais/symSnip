@@ -1,38 +1,64 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/index.html.twig' %}
 
-{% block title %}MainCode{% endblock %}
 
-{% block body %}
-    <h1>MainCode</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ main_code.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ main_code.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ main_code.description }}</td>
-            </tr>
-            <tr>
-                <th>Code</th>
-                <td>{{ main_code.code }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ main_code.type }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block title %} Admin | View Code {% endblock %}
+{% block content %}
+
+    <div class="text-left border border-gray-700 pt-2 px-6 pb-6 mt-28">
+        <h3 class="text-3xl text-center underline">{{ main_code.title | capitalize }}</h3>
+        <h4 class="text-2xl text-center">{{ main_code.description }}</h4>
+        <div class="relative">
+            <label for="codeToCopy" class="sr-only">Label</label>
+            <textarea id="codeToCopy"
+                      class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg codeWindow"
+                      cols="80"
+                      rows="20"
+                      disabled readonly>{{ main_code.code }}
+                </textarea>
+
+            <button data-copy-to-clipboard-target="codeToCopy"
+                    data-tooltip-target="tooltip-copy-npm-install-copy-button"
+                    class="absolute top-0 end-0 translate-y-0 translate-x-6 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2 inline-flex items-center justify-center">
+            <span id="default-icon">
+                <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="green" viewBox="0 0 18 20">
+                    <path d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                </svg>
+            </span>
+                <span id="success-icon" class="hidden inline-flex items-center">
+                <svg class="w-3.5 h-3.5 text-blue-700 dark:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                </svg>
+            </span>
+
+            </button>
+            <div id="tooltip-copy-npm-install-copy-button" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                <span id="default-tooltip-message">Copy to clipboard</span>
+                <span id="success-tooltip-message" class="hidden">Copied!</span>
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('app_admin_code_edit', {id: main_code.id}) }}">
+        <button class="bg-[#4F46E5] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]" type="submit">
+            Update Code
+        </button>
+    </a>
+    <form method="post" action="{{ path('app_admin_code_delete', {'id': main_code.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ main_code.id) }}">
+        <button class="bg-[#DD1F48] w-fit py-2 px-6 my-2 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#FF1F08]">Delete</button>
+    </form>
+    <a href="{{ path('app_admin_code_index') }}" class="bg-[#138808] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#13AF08]">Back to Codes</a>
+
 
     <a href="{{ path('app_admin_code_index') }}">back to list</a>
 
     <a href="{{ path('app_admin_code_edit', {'id': main_code.id}) }}">edit</a>
 
     {{ include('admin_code/_delete_form.html.twig') }}
+{% endblock %}
+{% block javascript %}
+{{ parent() }}
+<script src="{{ asset('scripts/flowbite.js') }}"></script>
+<script src="{{ asset('scripts/copyCodeScript.js') }}"></script>
 {% endblock %}
