@@ -2,7 +2,6 @@
 
 {% block title %} Admin | View HTML {% endblock %}
 {% block content %}
-
     <div class="text-left border border-gray-700 pt-2 px-6 pb-6 mt-28">
         <h3 class="text-3xl text-center underline">{{ html.title | capitalize }}</h3>
         <h4 class="text-2xl text-center">{{ html.description }}</h4>
@@ -37,6 +36,15 @@
             </div>
         </div>
     </div>
+    <div>
+        <h4 class="text-2xl">Template linked to the following code{% if html.codes|length > 1 %}s{% endif %}</h4>
+        <ul class="space-x-8">
+        {% for code in html.codes %}
+            <li class="inline"><a href="{{ path('app_admin_code_show', {id: code.id}) }}">{{ code.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div>
     <a href="{{ path('app_admin_html_edit', {id: html.id}) }}">
         <button class="bg-[#4F46E5] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]" type="submit">
             Update HTML
@@ -46,8 +54,8 @@
         <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ html.id) }}">
         <button class="bg-[#DD1F48] w-fit py-2 px-6 my-2 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#FF1F08]">Delete</button>
     </form>
+    </div>
     <a href="{{ path('app_admin_html_index') }}" class="bg-[#138808] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#13AF08]">Back to HTML List</a>
-
 {% endblock %}
 {% block javascript %}
 {{ parent() }}

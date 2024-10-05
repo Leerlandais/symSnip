@@ -32,7 +32,13 @@ class MainCodeType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
-            ]);
+            ])
+            ->add('html', EntityType::class, [
+                'class' => Html::class,
+                'choice_label' => 'title',
+                'expanded' => true,
+                'required' => false,
+            ])
         ;
     }
 
