@@ -52,9 +52,15 @@
             </div>
         </div>
         <div>
+            {% if edit %}
+                <button class="bg-[#4F46E5] w-full py-2 px-6 my-6 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]" type="submit">
+                    Update Executable
+                </button>
+                {% else %}
             <button class="bg-[#4F46E5] w-full py-2 px-6 my-6 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]" type="submit">
                 Add Executable
             </button>
+            {% endif %}
         </div>
     </div>
 </div>

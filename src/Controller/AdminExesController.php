@@ -39,6 +39,7 @@ final class AdminExesController extends AbstractController
         return $this->render('admin_exes/new.html.twig', [
             'exes_code' => $exesCode,
             'form' => $form,
+            'edit' => false,
         ]);
     }
 
@@ -65,6 +66,7 @@ final class AdminExesController extends AbstractController
         return $this->render('admin_exes/edit.html.twig', [
             'exes_code' => $exesCode,
             'form' => $form,
+            'edit' => true,
         ]);
     }
 

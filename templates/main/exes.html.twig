@@ -14,7 +14,12 @@
             <a href="{{ asset('downloads/multi-install-tool.exe') }}" download><img src="{{ asset('images/NodeIcon.png') }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
             <h6 class="italic text-sm">Click the image to download</h6>
         </div>
-    {% endfor %}
+        <a href="{{ path('app_admin_exes_index') }}">back to list</a>
+
+        <a href="{{ path('app_admin_exes_edit', {'id': exes_code.id}) }}">edit</a>
+
+        {{ include('admin_exes/_delete_form.html.twig') }}
+{% if exes.id == 1  %}
     <section>
         <h3 class="text-2xl underline mt-8">The Multi-Installer can :</h3>
         <dl class="text-center">
@@ -97,6 +102,8 @@
         </dl>
         <h4 class="text-xl mt-4">You can find the source code for this .exe <a href="https://github.com/Leerlandais/source_code/blob/main/Source/multi-installer.js" target="_blank" class="underline text-blue-800">here</a></h4>
     </section>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
 {% block javascript %}
 {{ parent() }}
