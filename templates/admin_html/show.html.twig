@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Html{% endblock %}
+
+{% block body %}
+    <h1>Html</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ html.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ html.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ html.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ html.image }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ html.code }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_html_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_html_edit', {'id': html.id}) }}">edit</a>
+
+    {{ include('admin_html/_delete_form.html.twig') }}
+{% endblock %}

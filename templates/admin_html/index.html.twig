@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Html index{% endblock %}
+
+{% block body %}
+    <h1>Html index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Code</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for html in htmls %}
+            <tr>
+                <td>{{ html.id }}</td>
+                <td>{{ html.title }}</td>
+                <td>{{ html.description }}</td>
+                <td>{{ html.image }}</td>
+                <td>{{ html.code }}</td>
+                <td>
+                    <a href="{{ path('app_admin_html_show', {'id': html.id}) }}">show</a>
+                    <a href="{{ path('app_admin_html_edit', {'id': html.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_html_new') }}">Create new</a>
+{% endblock %}
