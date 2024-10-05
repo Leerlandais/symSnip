@@ -8,7 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class MainCodeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -17,7 +17,22 @@ class MainCodeType extends AbstractType
             ->add('title')
             ->add('description')
             ->add('code')
-            ->add('type')
+            ->add('type', ChoiceType::class, [
+                'choices' => [
+                    'Call |' => 'phpCall',
+                    'Function |' => 'phpFunc',
+                    'JS |' => 'jsCode',
+                    'JSXtra |' => 'jsXtra',
+                    'Linux |' => 'unix',
+                    'React |' => 'reac',
+                    'Node |' => 'node',
+                    'Bash |' => 'bash',
+                    'Other |' => 'else',
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'required' => true,
+            ]);
         ;
     }
 
