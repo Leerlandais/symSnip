@@ -27,9 +27,10 @@
                     </a>
                 </td>
                 <td class="py-3 px-4">
-                    <a href="{{ path('app_admin_exes_delete', {'id': exes_code.id}) }}"
-                       class="font-medium text-blue-600 hover:text-[#DA3808] hover:underline">Delete
-                    </a>
+                    <form method="post" action="{{ path('app_admin_exes_delete', {'id': exes_code.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ exes_code.id) }}">
+                        <button class="font-medium text-blue-600 hover:text-[#DA3808] hover:underline">Delete</button>
+                    </form>
                 </td>
             </tr>
         {% else %}
