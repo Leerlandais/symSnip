@@ -21,8 +21,8 @@ class MainCodeType extends AbstractType
                 'choices' => [
                     'Call |' => 'phpCall',
                     'Function |' => 'phpFunc',
-                    'JS |' => 'jsCode',
-                    'JSXtra |' => 'jsXtra',
+                    'JS |' => 'java',
+                    'JSXtra |' => 'xtra',
                     'Linux |' => 'unix',
                     'React |' => 'reac',
                     'Node |' => 'node',
