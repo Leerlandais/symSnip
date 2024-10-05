@@ -28,7 +28,7 @@
                                     'placeholder': 'Code',
                                     'type' : 'textarea'}}) }}
                         </div>
-
+                        <div>
                             <label class="text-gray-600 font-bold inline-block" for="addCodeType">Type</label>
 
                             {{ form_widget(form.type, {
@@ -37,7 +37,16 @@
                                     'class': 'space-x-2 border-1 border'
                                 }
                             }) }}
-
+                        </div>
+                        <div>
+                            <label class="text-gray-600 font-bold inline-block mt-6" for="addCodeLink">Link to Html</label>
+                            {{ form_widget(form.html, {
+                                'attr': {
+                                    'id': 'addCodeLink',
+                                    'class': 'space-x-2 border-1 border'
+                                }
+                            }) }}
+                        </div>
                     </div>
                 </div>
             </div>
