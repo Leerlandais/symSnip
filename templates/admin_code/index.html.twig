@@ -13,9 +13,9 @@
                 <div class="overflow-x-auto">
                     <div class="flex flex-row justify-evenly mb-8">
                     {% for type in codeTypes %}
-                    <button><a href="{{ path('app_admin_type_index', {type: type.type}) }}">{{ type.type }}</a></button>
+                    <button class="bg-[#4F46E5] w-[10%] mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]"><a href="{{ path('app_admin_type_index', {type: type.type}) }}">{{ type.type|capitalize }}</a></button>
                     {% endfor %}
-                    <button><a href="{{ path('app_admin_code_index') }}">All</a></button>
+                    <button class="bg-[#4F46E5] w-[10%] mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]"><a href="{{ path('app_admin_code_index') }}">All</a></button>
                     </div>
                     <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead>
