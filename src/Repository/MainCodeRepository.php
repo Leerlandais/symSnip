@@ -44,7 +44,8 @@ class MainCodeRepository extends ServiceEntityRepository
     public function getCodeTypes (): array
     {
         return $this->createQueryBuilder('m')
-            ->select('DISTINCT m.type')
+            ->select('m.type, COUNT(m.type) AS typeCount')
+            ->groupBy('m.type')
             ->getQuery()
             ->getResult()
             ;

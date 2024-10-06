@@ -4,19 +4,28 @@
 
 {% block content %}
     <h1 class="mt-36 mb-8 text-5xl">Codes</h1>
-    <div class="container pt-8 mt-6 flex flex-col gap-4">
         {% if main_codes is empty %}
             <h3 class="text-3xl">Sorry, no codes are currently available</h3>
         {% else %}
+    <div class="container pt-8 mt-6 mx-auto flex flex-col gap-4">
 
             <div class="flex items-center justify-center">
                 <div class="overflow-x-auto">
-                    <div class="flex flex-row justify-evenly mb-8">
+                    <div class="flex flex-row flex-wrap justify-center space-x-8 mb-8 w-full">
                     {% for type in codeTypes %}
-                    <button class="bg-[#4F46E5] w-[10%] mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]"><a href="{{ path('app_admin_type_index', {type: type.type}) }}">{{ type.type|capitalize }}</a></button>
+                            <a href="{{ path('app_admin_type_index', {type: type.type}) }}"
+                               class="bg-[#4F46E5] w-[12%] mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]">
+
+                                {{ type.type|capitalize }} &lpar;{{ type.typeCount }}&rpar;
+
+                            </a>
                     {% endfor %}
-                    <button class="bg-[#4F46E5] w-[10%] mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]"><a href="{{ path('app_admin_code_index') }}">All</a></button>
                     </div>
+                            <a href="{{ path('app_admin_code_index') }}">
+                        <button class="bg-[#4F46E5] w-[12%] mb-4 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]">
+                                All
+                        </button>
+                            </a>
                     <table class="min-w-full bg-white shadow-md rounded-xl">
                         <thead>
                         <tr class="bg-blue-gray-100 text-center text-gray-700">
