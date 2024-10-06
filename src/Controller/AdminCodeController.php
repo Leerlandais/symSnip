@@ -19,9 +19,18 @@ final class AdminCodeController extends AbstractController
     {
         return $this->render('admin_code/index.html.twig', [
             'main_codes' => $mainCodeRepository->findAll(),
+            'codeTypes' => $mainCodeRepository->getCodeTypes(),
         ]);
     }
 
+    #[Route('type/{type}', name: 'app_admin_type_index', methods: ['GET'])]
+    public function types(MainCodeRepository $mainCodeRepository, string $type): Response
+    {
+        return $this->render('admin_code/index.html.twig', [
+            'main_codes' => $mainCodeRepository->getAllCodeByOneType($type),
+            'codeTypes' => $mainCodeRepository->getCodeTypes(),
+        ]);
+    }
     #[Route('/new', name: 'app_admin_code_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

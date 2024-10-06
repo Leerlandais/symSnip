@@ -40,4 +40,23 @@ class MainCodeRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function getCodeTypes (): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('DISTINCT m.type')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getAllCodeByOneType ($type): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.type = :type')
+            ->setParameter('type', $type)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
