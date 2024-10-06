@@ -7,19 +7,21 @@ use App\Entity\MainCode;
 use App\Entity\ExesCode;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(EntityManagerInterface $entityManager, Request $request): Response
     {
         $getLatest = $entityManager->getRepository(MainCode::class)->findBy([], ['id' => 'DESC'], 10, 0);
+        $referer = $request->headers->get('referer');
         return $this->render('main/index.html.twig', [
             'getLatest' => $getLatest,
             'headerTitle' => "",
-            'success' => "",
+            'referer' => $referer,
         ]);
     }
 
@@ -33,11 +35,13 @@ class MainController extends AbstractController
     }
 
     #[Route('/code/{id}', name: 'app_code', requirements: ['id'=>'\d+'], methods: ['GET'])]
-    public function code(EntityManagerInterface $entityManager, int $id): Response
+    public function code(EntityManagerInterface $entityManager, Request $request, int $id): Response
     {
+        $referer = $request->headers->get('referer');
         $code = $entityManager->getRepository(MainCode::class)->find($id);
         return $this->render('main/oneCode.html.twig', [
             'code' => $code,
+            'referer' => $referer,
         ]);
     }
 
