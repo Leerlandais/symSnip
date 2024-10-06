@@ -26,11 +26,13 @@ class MainController extends AbstractController
     }
 
     #[Route('/exes', name: 'app_exes')]
-    public function exes(EntityManagerInterface $entityManager): Response
+    public function exes(EntityManagerInterface $entityManager, Request $request): Response
     {
+        $referer = $request->headers->get('referer');
         $getExes = $entityManager->getRepository(ExesCode::class)->findAll();
         return $this->render('main/exes.html.twig', [
             'getExes' => $getExes,
+            'referer' => $referer,
         ]);
     }
 
@@ -47,7 +49,7 @@ class MainController extends AbstractController
 
 
     #[Route(path: 'type/{type}', name: 'app_type')]
-    public function oneType(EntityManagerInterface $entityManager, string $type): Response
+    public function oneType(EntityManagerInterface $entityManager, string $type, Request $request): Response
     {
         switch ($type) {
             case "phpCall" :
@@ -78,11 +80,13 @@ class MainController extends AbstractController
                 $headerTitle = "Other Snippets";
                 break;
         }
+        $referer = $request->headers->get('referer');
         $codes = $entityManager->getRepository(MainCode::class)->findBy(['type' => $type], ['id' => 'DESC']);
 
         return $this->render('main/code.html.twig', [
             'codes' => $codes,
             'headerTitle' => $headerTitle,
+            'referer' => $referer,
         ]);
 
         }
@@ -90,22 +94,26 @@ class MainController extends AbstractController
 
 
     #[Route('/html', name: 'app_html')]
-    public function html(EntityManagerInterface $entityManager): Response
+    public function html(EntityManagerInterface $entityManager, Request $request): Response
     {
+        $referer = $request->headers->get('referer');
         $htmls = $entityManager->getRepository(Html::class)->findAll();
         return $this->render('main/html.html.twig', [
             'controller_name' => 'HTMLController',
             'headerTitle' => "HTML",
             'htmls' => $htmls,
+            'referer' => $referer,
         ]);
     }
 
     #[Route('/html/{id}', name: 'app_oneHtml', requirements: ['id'=>'\d+'], methods: ['GET'])]
-    public function oneHtml(EntityManagerInterface $entityManager, int $id): Response
+    public function oneHtml(EntityManagerInterface $entityManager, Request $request, int $id): Response
     {
+        $referer = $request->headers->get('referer');
         $html = $entityManager->getRepository(Html::class)->find($id);
         return $this->render('main/oneHtml.html.twig', [
             'html' => $html,
+            'referer' => $referer,
         ]);
     }
 
