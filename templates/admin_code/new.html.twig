@@ -1,0 +1,11 @@
+{% extends 'admin/index.html.twig' %}
+
+
+{% block title %}Admin | Code{% endblock %}
+
+{% block content %}
+<div class="mt-24">
+    {{ include('admin_code/_form.html.twig') }}
+</div>
+    <a href="{{ path('app_admin_code_index') }}" class="bg-[#138808] w-fit py-2 px-6 my-6 mx-auto rounded-md text-white font-bold cursor-pointer hover:bg-[#13AF08]">back to list</a>
+{% endblock %}

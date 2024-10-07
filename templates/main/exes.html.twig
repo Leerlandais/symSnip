@@ -11,10 +11,10 @@
         <div class="text-center border border-gray-700 pt-2 px-6 pb-6 mt-28 flex flex-col items-center">
             <h3 class="text-3xl text-center underline">{{ exes.title | capitalize }}</h3>
             <h4 class="text-2xl text-center">{{ exes.description }}</h4>
-            <a href="{{ asset('downloads/multi-install-tool.exe') }}" download><img src="{{ asset('images/NodeIcon.png') }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
+            <a href="{{ asset(exes.location) }}" download><img src="{{ asset(exes.image) }}" alt="{{ exes.description }}" class="h-36 w-36"></a>
             <h6 class="italic text-sm">Click the image to download</h6>
         </div>
-    {% endfor %}
+{% if exes.id == 1  %}
     <section>
         <h3 class="text-2xl underline mt-8">The Multi-Installer can :</h3>
         <dl class="text-center">
@@ -97,6 +97,8 @@
         </dl>
         <h4 class="text-xl mt-4">You can find the source code for this .exe <a href="https://github.com/Leerlandais/source_code/blob/main/Source/multi-installer.js" target="_blank" class="underline text-blue-800">here</a></h4>
     </section>
+        {% endif %}
+    {% endfor %}
 {% endblock %}
 {% block javascript %}
 {{ parent() }}

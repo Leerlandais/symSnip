@@ -1,0 +1,75 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}MainCode index{% endblock %}
+
+{% block content %}
+    <h1 class="mt-36 mb-8 text-5xl">Codes</h1>
+        {% if main_codes is empty %}
+            <h3 class="text-3xl">Sorry, no codes are currently available</h3>
+        {% else %}
+    <div class="container pt-8 mt-6 mx-auto flex flex-col gap-4">
+
+            <div class="flex items-center justify-center">
+                <div class="overflow-x-auto">
+                    <div class="flex flex-row flex-wrap justify-center space-x-8 mb-8 w-full">
+                    {% for type in codeTypes %}
+                            <a href="{{ path('app_admin_type_index', {type: type.type}) }}"
+                               class="bg-[#4F46E5] w-[12%] mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]">
+
+                                {{ type.type|capitalize }} &lpar;{{ type.typeCount }}&rpar;
+
+                            </a>
+                    {% endfor %}
+                    </div>
+                            <a href="{{ path('app_admin_code_index') }}">
+                        <button class="bg-[#4F46E5] w-[12%] mb-4 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]">
+                                All
+                        </button>
+                            </a>
+                    <table class="min-w-full bg-white shadow-md rounded-xl">
+                        <thead>
+                        <tr class="bg-blue-gray-100 text-center text-gray-700">
+                            <th class="py-3 px-4">Name</th>
+                            <th class="py-3 px-4">Description</th>
+                            <th class="py-3 px-4 text-center">Show</th>
+                            <th class="py-3 px-4 text-center">Update</th>
+                            <th class="py-3 px-4 text-center">Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-blue-gray-900">
+                        {% for code in main_codes %}
+                            <tr class="border-b border-blue-gray-200">
+                                <td class="py-3 px-4">{{ code.title }}</td>
+                                <td class="py-3 px-4">{{ code.description }}</td>
+
+                                <td class="py-3 px-4">
+                                    <a href="{{ path('app_admin_code_show', {'id': code.id}) }}"
+                                       class="font-medium text-blue-600 hover:text-[#13A808] hover:underline">Show
+                                    </a>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <a href="{{ path('app_admin_code_edit', {'id': code.id}) }}"
+                                       class="font-medium text-blue-600 hover:text-[#F18805] hover:underline">Update
+                                    </a>
+                                </td>
+                                <td class="py-3 px-4">
+                                    <form method="post" action="{{ path('app_admin_code_delete', {'id': code.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ code.id) }}">
+                                        <button class="font-medium text-blue-600 hover:text-[#FF1B1C] hover:underline">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <a href="{{ path('app_admin_code_new') }}">
+        <button class="bg-[#4F46E5] w-auto mt-3 p-2 rounded-md text-white font-bold cursor-pointer hover:bg-[#138808]">
+            Add New Code
+        </button>
+    </a>
+{% endblock %}
